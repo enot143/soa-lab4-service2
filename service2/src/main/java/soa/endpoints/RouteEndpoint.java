@@ -2,6 +2,7 @@ package soa.endpoints;
 
 import soa.dto.CoordinateDto;
 import soa.dto.RouteDto;
+import soa.entities.Route;
 import soa.services.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -10,6 +11,10 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import soa.dtos.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Endpoint
 public class RouteEndpoint {
@@ -25,7 +30,8 @@ public class RouteEndpoint {
     @ResponsePayload
     public FindRoutesBetweenLocationsResponse findRoutesBetweenLocations(@RequestPayload FindRoutesBetweenLocationsRequest request) {
         FindRoutesBetweenLocationsResponse response = new FindRoutesBetweenLocationsResponse();
-        response.getDtos().addAll(routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder()));
+        List<soa.dtos.RouteDto> list = routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder());
+        response.getDtos().addAll(list);
         return response;
     }
 

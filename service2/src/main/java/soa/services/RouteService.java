@@ -1,11 +1,14 @@
 package soa.services;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import soa.dto.LocationDto;
 import soa.dto.RouteDto;
 import soa.dto.RoutePostDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import soa.entities.Route;
 
 import java.util.List;
 
@@ -15,11 +18,11 @@ public class RouteService {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    public List findRouteByIds(Integer idFrom, Integer idTo, String order) {
+    public List<soa.dtos.RouteDto> findRouteByIds(Integer idFrom, Integer idTo, String order) {
         String URI = BASE_URL + "/routes?from_id=between:"
                 + idFrom + ":" + idFrom + "&to_id=between:" + idTo + ":" + idTo +
                 "&sort=" + order;
-        return restTemplate.getForObject(URI, List.class);
+        return restTemplate.exchange(URI, HttpMethod.GET, null, new ParameterizedTypeReference<List<soa.dtos.RouteDto>>() {}).getBody();
     }
 
     public ResponseEntity addRouteBetweenLocations(Integer idFrom, Integer idTo, double distance, RouteDto routeDto) {
