@@ -25,23 +25,15 @@ public class RouteEndpoint {
     @ResponsePayload
     public FindRoutesBetweenLocationsResponse findRoutesBetweenLocations(@RequestPayload FindRoutesBetweenLocationsRequest request) {
         FindRoutesBetweenLocationsResponse response = new FindRoutesBetweenLocationsResponse();
-        response.getDtos().addAll(
-                routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder())
-        );
+        response.getDtos().addAll(routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder()));
         return response;
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addRouteRequest")
     @ResponsePayload
     public AddRouteResponse addRoute(@RequestPayload AddRouteRequest request) {
-        AddRouteResponse response = new AddRouteResponse();
-        RouteDto routeDto = new RouteDto(request.getName(),
-                new CoordinateDto(request.getCoordinates().getX(), request.getCoordinates().getY()));
-        routeService.addRouteBetweenLocations(
-                request.getIdFrom(),
-                request.getIdTo(),
-                request.getDistance(),
-                routeDto);
-        return response;
+        RouteDto routeDto = new RouteDto(request.getName(), new CoordinateDto(request.getCoordinates().getX(), request.getCoordinates().getY()));
+        routeService.addRouteBetweenLocations(request.getIdFrom(), request.getIdTo(), request.getDistance(), routeDto);
+        return new AddRouteResponse();
     }
 }
