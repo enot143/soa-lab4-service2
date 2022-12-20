@@ -1,9 +1,8 @@
-package itmo.service2.services;
+package soa.services;
 
-import itmo.service2.dto.LocationDto;
-import itmo.service2.dto.RouteDto;
-import itmo.service2.dto.RoutePostDto;
-import itmo.service2.entities.Route;
+import soa.dto.LocationDto;
+import soa.dto.RouteDto;
+import soa.dto.RoutePostDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,12 +15,11 @@ public class RouteService {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    public ResponseEntity<List<Route>> findRouteByIds(Integer idFrom, Integer idTo, String order) {
+    public List findRouteByIds(Integer idFrom, Integer idTo, String order) {
         String URI = BASE_URL + "/routes?from_id=between:"
                 + idFrom + ":" + idFrom + "&to_id=between:" + idTo + ":" + idTo +
                 "&sort=" + order;
-        List<Route> routes = restTemplate.getForObject(URI, List.class);
-        return ResponseEntity.ok(routes);
+        return restTemplate.getForObject(URI, List.class);
     }
 
     public ResponseEntity addRouteBetweenLocations(Integer idFrom, Integer idTo, double distance, RouteDto routeDto) {

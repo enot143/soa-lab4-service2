@@ -1,4 +1,4 @@
-package itmo.service2.filters;
+package soa.filters;
 
 import org.springframework.stereotype.Component;
 

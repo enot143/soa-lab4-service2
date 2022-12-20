@@ -1,4 +1,4 @@
-package itmo.service2.configs;
+package soa.configs;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

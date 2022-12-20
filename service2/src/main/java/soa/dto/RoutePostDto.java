@@ -1,4 +1,4 @@
-package itmo.service2.dto;
+package soa.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

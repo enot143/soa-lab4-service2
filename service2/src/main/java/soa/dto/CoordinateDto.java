@@ -1,4 +1,4 @@
-package itmo.service2.dto;
+package soa.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;

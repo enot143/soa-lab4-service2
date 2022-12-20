@@ -1,4 +1,4 @@
-package itmo.service2.entities;
+package soa.entities;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

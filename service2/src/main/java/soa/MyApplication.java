@@ -1,4 +1,4 @@
-package itmo.service2;
+package soa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

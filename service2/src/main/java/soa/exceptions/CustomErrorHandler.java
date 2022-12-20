@@ -1,4 +1,4 @@
-package itmo.service2.exceptions;
+package soa.exceptions;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

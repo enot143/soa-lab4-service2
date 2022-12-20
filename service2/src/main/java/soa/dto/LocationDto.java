@@ -1,4 +1,4 @@
-package itmo.service2.exceptions;
+package soa.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorMessage implements Serializable {
-    private String message;
+public class LocationDto implements Serializable {
+    private Integer id;
 }
