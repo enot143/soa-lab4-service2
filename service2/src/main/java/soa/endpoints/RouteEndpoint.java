@@ -30,8 +30,7 @@ public class RouteEndpoint {
     @ResponsePayload
     public FindRoutesBetweenLocationsResponse findRoutesBetweenLocations(@RequestPayload FindRoutesBetweenLocationsRequest request) {
         FindRoutesBetweenLocationsResponse response = new FindRoutesBetweenLocationsResponse();
-        List<soa.dtos.RouteDto> list = routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder());
-        response.getDtos().addAll(list);
+        response.getDtos().addAll(routeService.findRouteByIds(request.getIdFrom(), request.getIdTo(), request.getOrder()));
         return response;
     }
 
